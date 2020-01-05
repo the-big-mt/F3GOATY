@@ -16,13 +16,22 @@ Events:
 	- vec3 (floats/doubles) - pos
 	- quat - rot?
 
-* Item pickup
+* Item added
 	- string - loc string for name?
 	- (u)int32 - amount
 
 * Item removed (can also be just an item pickup with negative amount)
 	- string - loc string for name?
 	- (u)int32 - amount
+
+* Experience gained
+	- (u)int32 - amount
+
+* Location discovered
+	- string - location name
+
+* Level up
+	- (u)int32 - level
 
 Messages:
 * Inventory data
