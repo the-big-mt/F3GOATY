@@ -2,12 +2,11 @@
 
 #include <algorithm>
 
-using namespace std;
 using namespace RakNet;
 
 Guarded<> Client::cs;
-map<RakNetGUID, Client*> Client::clients;
-stack<unsigned int> Client::clientID;
+std::map<RakNetGUID, Client*> Client::clients;
+std::stack<unsigned int> Client::clientID;
 
 Client::Client(RakNetGUID guid, NetworkID player) : guid(guid), player(player)
 {
@@ -78,10 +77,10 @@ Client* Client::GetClientFromPlayer(NetworkID id)
 	});
 }
 
-vector<RakNetGUID> Client::GetNetworkList(Client* except)
+std::vector<RakNetGUID> Client::GetNetworkList(Client* except)
 {
 	return cs.Operate([except]() {
-		vector<RakNetGUID> network;
+		std::vector<RakNetGUID> network;
 
 		for (auto it = clients.begin(); it != clients.end(); ++it)
 			if (it->second != except)
@@ -91,10 +90,10 @@ vector<RakNetGUID> Client::GetNetworkList(Client* except)
 	});
 }
 
-vector<RakNetGUID> Client::GetNetworkList(RakNetGUID except)
+std::vector<RakNetGUID> Client::GetNetworkList(RakNetGUID except)
 {
 	return cs.Operate([except]() {
-		vector<RakNetGUID> network;
+		std::vector<RakNetGUID> network;
 
 		for (auto it = clients.begin(); it != clients.end(); ++it)
 			if (it->first != except)
@@ -104,10 +103,10 @@ vector<RakNetGUID> Client::GetNetworkList(RakNetGUID except)
 	});
 }
 
-vector<RakNetGUID> Client::GetNetworkList(const vector<NetworkID>& players, RakNetGUID except)
+std::vector<RakNetGUID> Client::GetNetworkList(const std::vector<NetworkID>& players, RakNetGUID except)
 {
 	return cs.Operate([&players, except]() {
-		vector<RakNetGUID> network;
+		std::vector<RakNetGUID> network;
 
 		for (auto it = clients.begin(); it != clients.end(); ++it)
 			if (it->first != except && find(players.begin(), players.end(), it->second->player) != players.end())
