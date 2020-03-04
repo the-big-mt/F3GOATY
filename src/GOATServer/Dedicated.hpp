@@ -1,5 +1,5 @@
-#ifndef DEDICATED_H
-#define DEDICATED_H
+#pragma once
+
 
 #include "vaultserver.hpp"
 #include "RakNet.hpp"
@@ -118,5 +118,3 @@ class Dedicated
 		//static void SetServerConnections(int connections);
 
 };
-
-#endif

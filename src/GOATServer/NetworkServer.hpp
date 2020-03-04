@@ -1,5 +1,4 @@
-#ifndef NETWORKSERVER_H
-#define NETWORKSERVER_H
+#pragma once
 
 #include "vaultserver.hpp"
 #include "Network.hpp"
@@ -34,5 +33,3 @@ class NetworkServer : public Network
 		static NetworkResponse ProcessPacket(RakNet::Packet* data);
 
 };
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef VAULTSERVER_H
-#define VAULTSERVER_H
+#pragma once
 
 #define MODFILES_PATH  "mods"
 #define SCRIPTS_PATH   "scripts"
@@ -20,6 +19,4 @@
 
 #ifndef HAVE_STDINT_H
 #define HAVE_STDINT_H
-#endif
-
 #endif

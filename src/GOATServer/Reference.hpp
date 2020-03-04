@@ -1,5 +1,4 @@
-#ifndef REFERENCEDB_H
-#define REFERENCEDB_H
+#pragma once
 
 #include "vaultserver.hpp"
 #include "Expected.hpp"
@@ -66,5 +65,3 @@ namespace DB
 			Reference& operator=(Reference&&) = delete;
 	};
 }
-
-#endif

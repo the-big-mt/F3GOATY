@@ -1,5 +1,4 @@
-#ifndef ACREFERENCE_H
-#define ACREFERENCE_H
+#pragma once
 
 #include "vaultserver.hpp"
 #include "Expected.hpp"
@@ -50,5 +49,3 @@ namespace DB
 			AcReference& operator=(AcReference&&) = delete;
 	};
 }
-
-#endif

@@ -1,6 +1,5 @@
-#ifndef CLIENT_H
-#define CLIENT_H
 
+#pragma once
 #include "vaultserver.hpp"
 #include "Guarded.hpp"
 #include "RakNet.hpp"
@@ -86,5 +85,3 @@ private:
 	static std::map<RakNet::RakNetGUID, Client*> clients;
 	static std::stack<unsigned int> clientID;
 };
-
-#endif

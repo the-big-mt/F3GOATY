@@ -1,5 +1,4 @@
-#ifndef PAWN_H
-#define PAWN_H
+#pragma once
 
 #include "vaultserver.hpp"
 #include "amx/amx.h"
@@ -38,5 +37,3 @@ class PAWN
 		static cell Call(AMX* amx, const char* name, const char* argl, int buf, ...);
 		static cell Call(AMX* amx, const char* name, const char* argl, const std::vector<boost::any>& args);
 };
-
-#endif

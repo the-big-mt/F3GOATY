@@ -1,5 +1,4 @@
-#ifndef OBJECTFACTORY_H
-#define OBJECTFACTORY_H
+#pragma once
 
 #include "vaultserver/Database.hpp"
 #include "vaultserver/Record.hpp"
@@ -31,5 +30,3 @@ class ObjectFactory
 	static Database<DB::Interior> dbInteriors;
 	static Database<DB::AcReference> dbAcReferences;
 };
-
-#endif // OBJECTFACTORY_H

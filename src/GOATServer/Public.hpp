@@ -1,5 +1,5 @@
-#ifndef PUBLIC_H
-#define PUBLIC_H
+#pragma once
+
 
 #include "vaultserver.hpp"
 #include "ScriptFunction.hpp"
@@ -41,5 +41,3 @@ class Public : public ScriptFunction
 		 */
 		static void DeleteAll();
 };
-
-#endif

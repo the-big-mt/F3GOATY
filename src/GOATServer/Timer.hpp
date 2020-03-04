@@ -1,5 +1,5 @@
-#ifndef TIMER_H
-#define TIMER_H
+#pragma once
+
 
 #include "vaultserver.hpp"
 #include "ScriptFunction.hpp"
@@ -51,5 +51,3 @@ class Timer : public ScriptFunction, public RakNet::NetworkIDObject
 		 */
 		static void TerminateAll();
 };
-
-#endif

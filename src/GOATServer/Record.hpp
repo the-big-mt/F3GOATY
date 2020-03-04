@@ -1,5 +1,4 @@
-#ifndef RECORDDB_H
-#define RECORDDB_H
+#pragma once
 
 #include "vaultserver.hpp"
 #include "Expected.hpp"
@@ -56,5 +55,3 @@ namespace DB
 			Record& operator=(Record&&) = delete;
 	};
 }
-
-#endif

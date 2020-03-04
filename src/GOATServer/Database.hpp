@@ -1,5 +1,5 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#pragma once
+
 
 #include "vaultserver.hpp"
 
@@ -31,5 +31,3 @@ class Database
 
 		unsigned int initialize(const std::string& file, const std::vector<std::string>& tables);
 };
-
-#endif
