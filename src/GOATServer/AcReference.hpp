@@ -1,11 +1,11 @@
 #pragma once
 
-#include "vaultserver.hpp"
-#include "Expected.hpp"
-
 #include <string>
 #include <tuple>
 #include <unordered_map>
+
+#include "vaultserver.hpp"
+#include "Expected.hpp"
 
 class sqlite3_stmt;
 

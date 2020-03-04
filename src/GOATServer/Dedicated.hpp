@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+#include <thread>
 
 #include "vaultserver.hpp"
 #include "RakNet.hpp"
@@ -7,9 +9,6 @@
 #ifdef VAULTMP_DEBUG
 #include "Debug.hpp"
 #endif
-
-#include <vector>
-#include <thread>
 
 #define RAKNET_STANDARD_PORT            1770
 #define RAKNET_STANDARD_CONNECTIONS     4

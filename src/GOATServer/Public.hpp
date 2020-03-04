@@ -1,10 +1,9 @@
 #pragma once
 
+#include <unordered_map>
 
 #include "vaultserver.hpp"
 #include "ScriptFunction.hpp"
-
-#include <unordered_map>
 
 /**
  * \brief Create publics to use across all scripts

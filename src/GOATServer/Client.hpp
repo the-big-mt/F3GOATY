@@ -1,12 +1,13 @@
 
 #pragma once
-#include "vaultserver.hpp"
-#include "Guarded.hpp"
-#include "RakNet.hpp"
 
 #include <vector>
 #include <stack>
 #include <map>
+
+#include "vaultserver.hpp"
+#include "Guarded.hpp"
+#include "RakNet.hpp"
 
 class Player;
 

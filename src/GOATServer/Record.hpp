@@ -1,13 +1,13 @@
 #pragma once
 
-#include "vaultserver.hpp"
-#include "Expected.hpp"
-
 #include <vector>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <functional>
+
+#include "vaultserver.hpp"
+#include "Expected.hpp"
 
 class sqlite3_stmt;
 

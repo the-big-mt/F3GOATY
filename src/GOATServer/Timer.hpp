@@ -1,11 +1,10 @@
 #pragma once
 
+#include <unordered_map>
 
 #include "vaultserver.hpp"
 #include "ScriptFunction.hpp"
 #include "RakNet.hpp"
-
-#include <unordered_map>
 
 /**
  * \brief Create timers to be used in scripts

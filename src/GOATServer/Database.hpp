@@ -1,14 +1,13 @@
 #pragma once
 
+#include <string>
+#include <vector>
 
 #include "vaultserver.hpp"
 
 #ifdef VAULTMP_DEBUG
 #include "Debug.hpp"
 #endif
-
-#include <string>
-#include <vector>
 
 /**
  * \brief Used to access vaultmp SQLite3 databases
