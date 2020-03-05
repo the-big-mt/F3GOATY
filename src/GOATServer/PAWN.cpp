@@ -4,7 +4,6 @@
 #include "amx/amx.h"
 #include "amx/amxaux.h"
 
-using namespace std;
 using namespace RakNet;
 
 extern "C" {
@@ -16,9 +15,9 @@ extern "C" {
 	int AMXAPI amx_FileInit(AMX*);
 }
 
-static vector<vector<char>> strings;
-static vector<pair<cell*, double>> floats;
-static pair<cell*, NetworkID*> data = {nullptr, nullptr};
+static std::vector<std::vector<char>> strings;
+static std::vector<pair<cell*, double>> floats;
+static std::pair<cell*, NetworkID*> data = {nullptr, nullptr};
 
 void free_strings() noexcept {
 	strings.clear();
@@ -189,7 +188,7 @@ cell PAWN::CreateTimer(AMX* amx, const cell* params) noexcept
 	source = amx_Address(amx, params[1]);
 	amx_StrLen(source, &len);
 
-	vector<char> name;
+	std::vector<char> name;
 	name.reserve(len + 1);
 
 	amx_GetString(&name[0], source, 0, UNLIMITED);
@@ -205,7 +204,7 @@ cell PAWN::CreateTimerEx(AMX* amx, const cell* params) noexcept
 	source = amx_Address(amx, params[1]);
 	amx_StrLen(source, &len);
 
-	vector<char> name;
+	std::vector<char> name;
 	name.reserve(len + 1);
 
 	amx_GetString(&name[0], source, 0, UNLIMITED);
@@ -213,12 +212,12 @@ cell PAWN::CreateTimerEx(AMX* amx, const cell* params) noexcept
 	source = amx_Address(amx, params[3]);
 	amx_StrLen(source, &len);
 
-	vector<char> def;
+	std::vector<char> def;
 	def.reserve(len + 1);
 
 	amx_GetString(&def[0], source, 0, UNLIMITED);
 
-	vector<boost::any> args;
+	std::vector<boost::any> args;
 	unsigned int count = (params[0] / sizeof(cell)) - 3;
 
 	if (count != static_cast<unsigned int>(len))
@@ -263,7 +262,7 @@ cell PAWN::CreateTimerEx(AMX* amx, const cell* params) noexcept
 			case 's':
 			{
 				amx_StrLen(data, &len);
-				vector<char> str;
+				std::vector<char> str;
 				str.reserve(len + 1);
 				amx_GetString(&str[0], data, 0, UNLIMITED);
 				args.emplace_back(string(&str[0]));
@@ -285,21 +284,21 @@ cell PAWN::MakePublic(AMX* amx, const cell* params) noexcept
 
 	source = amx_Address(amx, params[1]);
 	amx_StrLen(source, &len);
-	vector<char> real;
+	std::vector<char> real;
 	real.reserve(len + 1);
 
 	amx_GetString(&real[0], source, 0, UNLIMITED);
 
 	source = amx_Address(amx, params[2]);
 	amx_StrLen(source, &len);
-	vector<char> name;
+	std::vector<char> name;
 	name.reserve(len + 1);
 
 	amx_GetString(&name[0], source, 0, UNLIMITED);
 
 	source = amx_Address(amx, params[3]);
 	amx_StrLen(source, &len);
-	vector<char> def;
+	std::vector<char> def;
 	def.reserve(len + 1);
 
 	amx_GetString(&def[0], source, 0, UNLIMITED);
@@ -316,12 +315,12 @@ cell PAWN::CallPublic(AMX* amx, const cell* params) noexcept
 
 	source = amx_Address(amx, params[1]);
 	amx_StrLen(source, &len);
-	vector<char> name;
+	std::vector<char> name;
 	name.reserve(len + 1);
 
 	amx_GetString(&name[0], source, 0, UNLIMITED);
 
-	string def;
+	std::string def;
 
 	try
 	{
@@ -329,7 +328,7 @@ cell PAWN::CallPublic(AMX* amx, const cell* params) noexcept
 	}
 	catch (...) { return 0; }
 
-	vector<boost::any> args;
+	std::vector<boost::any> args;
 	unsigned int count = (params[0] / sizeof(cell)) - 1;
 
 	if (count != def.length())
@@ -380,7 +379,7 @@ cell PAWN::CallPublic(AMX* amx, const cell* params) noexcept
 			case 's':
 			{
 				amx_StrLen(data, &len);
-				vector<char> str;
+				std::vector<char> str;
 				str.reserve(len + 1);
 				amx_GetString(&str[0], data, 0, UNLIMITED);
 				args.emplace_back(string(&str[0]));
@@ -435,7 +434,7 @@ cell PAWN::Call(AMX* amx, const char* name, const char* argl, int buf, ...)
 	va_list args;
 	va_start(args, buf);
 	cell ret = 0;
-	vector<pair<cell*, char*>> strings;
+	std::vector<std::pair<cell*, char*>> strings;
 
 	try
 	{
@@ -448,7 +447,7 @@ cell PAWN::Call(AMX* amx, const char* name, const char* argl, int buf, ...)
 			throw VaultException("PAWN runtime error (%d): \"%s\"", err, aux_StrError(err)).stacktrace();
 
 		unsigned int len = strlen(argl);
-		vector<cell> args_amx;
+		std::vector<cell> args_amx;
 
 		for (unsigned int i = 0; i < len; ++i)
 		{
@@ -598,7 +597,7 @@ cell PAWN::Call(AMX* amx, const char* name, const char* argl, const vector<boost
 
 				case 's':
 				{
-					string string_ = boost::any_cast<string>(args.at(i));
+					std::string string_ = boost::any_cast<std::string>(args.at(i));
 					cell* store;
 					amx_PushString(amx, &store, string_.c_str(), 1, 0);
 

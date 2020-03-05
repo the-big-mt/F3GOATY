@@ -7,14 +7,13 @@
 #include <cmath>
 #include <algorithm>
 
-using namespace std;
 using namespace DB;
 using namespace Values;
 
-unordered_map<unsigned int, Reference*> Reference::refs;
-unordered_map<unsigned int, vector<Reference*>> Reference::cells;
+std::unordered_map<unsigned int, Reference*> Reference::refs;
+std::unordered_map<unsigned int, std::vector<Reference*>> Reference::cells;
 
-Reference::Reference(const string& table, sqlite3_stmt* stmt)
+Reference::Reference(const std::string& table, sqlite3_stmt* stmt)
 {
 	if (sqlite3_column_count(stmt) != 17)
 		throw VaultException("Malformed input database (references): %s", table.c_str()).stacktrace();
@@ -110,9 +109,9 @@ Expected<Reference*> Reference::Lookup(unsigned int refID)
 	return VaultException("No reference with refID %08X found", refID);
 }
 
-vector<Reference*> Reference::Lookup(const std::string& type)
+std::vector<Reference*> Reference::Lookup(const std::string& type)
 {
-	vector<Reference*> data;
+	std::vector<Reference*> data;
 
 	for (const auto& ref : refs)
 		if (!ref.second->GetType().compare(type))
@@ -121,12 +120,12 @@ vector<Reference*> Reference::Lookup(const std::string& type)
 	return data;
 }
 
-const string& Reference::GetType() const
+const std::string& Reference::GetType() const
 {
 	return type;
 }
 
-const string& Reference::GetEditor() const
+const std::string& Reference::GetEditor() const
 {
 	return editor;
 }

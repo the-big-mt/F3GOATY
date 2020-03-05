@@ -3,12 +3,11 @@
 
 #include <cmath>
 
-using namespace std;
 using namespace DB;
 
-unordered_map<unsigned int, AcReference*> AcReference::refs;
+std::unordered_map<unsigned int, AcReference*> AcReference::refs;
 
-AcReference::AcReference(const string& table, sqlite3_stmt* stmt)
+AcReference::AcReference(const std::string& table, sqlite3_stmt* stmt)
 {
 	if (sqlite3_column_count(stmt) != 12)
 		throw VaultException("Malformed input database (actor / creature references): %s", table.c_str()).stacktrace();
@@ -24,8 +23,8 @@ AcReference::AcReference(const string& table, sqlite3_stmt* stmt)
 	refID = static_cast<unsigned int>(sqlite3_column_int(stmt, 1));
 	baseID = static_cast<unsigned int>(sqlite3_column_int(stmt, 2));
 	cell = static_cast<unsigned int>(sqlite3_column_int(stmt, 3));
-	pos = make_tuple(sqlite3_column_double(stmt, 4), sqlite3_column_double(stmt, 5), sqlite3_column_double(stmt, 6));
-	angle = make_tuple(sqlite3_column_double(stmt, 7) * degrees, sqlite3_column_double(stmt, 8) * degrees, sqlite3_column_double(stmt, 9) * degrees);
+	pos = std::make_tuple(sqlite3_column_double(stmt, 4), sqlite3_column_double(stmt, 5), sqlite3_column_double(stmt, 6));
+	angle = std::make_tuple(sqlite3_column_double(stmt, 7) * degrees, sqlite3_column_double(stmt, 8) * degrees, sqlite3_column_double(stmt, 9) * degrees);
 	flags = static_cast<unsigned int>(sqlite3_column_int(stmt, 10));
 
 	if (refID & 0xFF000000)
@@ -61,7 +60,7 @@ Expected<AcReference*> AcReference::Lookup(unsigned int refID)
 	return VaultException("No actor / creature reference with refID %08X found", refID);
 }
 
-const string& AcReference::GetEditor() const
+const std::string& AcReference::GetEditor() const
 {
 	return editor;
 }

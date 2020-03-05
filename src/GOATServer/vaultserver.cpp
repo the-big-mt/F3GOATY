@@ -15,7 +15,6 @@
 #include <unordered_map>
 #include <csignal>
 
-using namespace std;
 using namespace RakNet;
 
 bool cmd_exit = false;
@@ -24,7 +23,7 @@ void InputThread()
 {
 	cmd_exit = false;
 	char input[256];
-	string cmd;
+	std::string cmd;
 
 	do
 	{
@@ -39,11 +38,11 @@ void InputThread()
 		if (!tok)
 			continue;
 
-		cmd = string(tok);
+		cmd = std::string(tok);
 
 		if (!strcmp(cmd.c_str(), "ls"))
 		{
-			vector<RakNetGUID> clients = Client::GetNetworkList(nullptr);
+			std::vector<RakNetGUID> clients = Client::GetNetworkList(nullptr);
 
 			for (RakNetGUID& guid : clients)
 			{
@@ -174,17 +173,17 @@ int main(int, char* argv[])
 #else
 			setenv(PWNFILES_KEY, PWNFILES_VAL, 1);
 #endif
-			vector<char> _scripts(scripts, scripts + strlen(scripts) + 1);
+			std::vector<char> _scripts(scripts, scripts + strlen(scripts) + 1);
 			Script::LoadScripts(&_scripts[0], base);
 		}
-		catch (exception& e)
+		catch (std::exception& e)
 		{
 			try
 			{
 				VaultException& vaulterror = dynamic_cast<VaultException&>(e);
 				vaulterror.Console();
 			}
-			catch (bad_cast& no_vaulterror)
+			catch (std::bad_cast& no_vaulterror)
 			{
 				VaultException vaulterror(e.what());
 				vaulterror.Console();
@@ -195,7 +194,7 @@ int main(int, char* argv[])
 		{
 			Dedicated::SetSpawnCell(cell);
 
-			vector<char> buf(mods, mods + strlen(mods) + 1);
+			std::vector<char> buf(mods, mods + strlen(mods) + 1);
 			char* token = strtok(&buf[0], ",");
 			ModList modfiles;
 			char file[MAX_PATH];
@@ -218,14 +217,14 @@ int main(int, char* argv[])
 			thread hDedicatedThread = Dedicated::InitializeServer(port, host, players, announce, query, files, fileslots);
 			hDedicatedThread.join();
 		}
-		catch (exception& e)
+		catch (std::exception& e)
 		{
 			try
 			{
 				VaultException& vaulterror = dynamic_cast<VaultException&>(e);
 				vaulterror.Console();
 			}
-			catch (bad_cast& no_vaulterror)
+			catch (std::bad_cast& no_vaulterror)
 			{
 				VaultException vaulterror(e.what());
 				vaulterror.Console();

@@ -1,19 +1,18 @@
 #include "Timer.hpp"
 #include "Network.hpp"
 
-using namespace std;
 using namespace RakNet;
 
-unordered_map<NetworkID, Timer*> Timer::timers;
+std::unordered_map<NetworkID, Timer*> Timer::timers;
 NetworkID Timer::last_timer = 0;
 
-Timer::Timer(ScriptFunc timer, const string& def, vector<boost::any> args, unsigned int interval) : ScriptFunction(timer, def), ms(msecs()), interval(interval), args(args), markdelete(false)
+Timer::Timer(ScriptFunc timer, const std::string& def, std::vector<boost::any> args, unsigned int interval) : ScriptFunction(timer, def), ms(msecs()), interval(interval), args(args), markdelete(false)
 {
 	this->SetNetworkIDManager(Network::Manager());
 	timers.emplace(this->GetNetworkID(), this);
 }
 
-Timer::Timer(ScriptFuncPAWN timer, AMX* amx, const string& def, vector<boost::any> args, unsigned int interval) : ScriptFunction(timer, amx, def), ms(msecs()), interval(interval), args(args), markdelete(false)
+Timer::Timer(ScriptFuncPAWN timer, AMX* amx, const std::string& def, std::vector<boost::any> args, unsigned int interval) : ScriptFunction(timer, amx, def), ms(msecs()), interval(interval), args(args), markdelete(false)
 {
 	this->SetNetworkIDManager(Network::Manager());
 	timers.emplace(this->GetNetworkID(), this);

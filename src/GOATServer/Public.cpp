@@ -1,16 +1,14 @@
 #include "Public.hpp"
 #include "VaultException.hpp"
 
-using namespace std;
+std::unordered_map<std::string, Public*> Public::publics;
 
-unordered_map<string, Public*> Public::publics;
-
-Public::Public(ScriptFunc _public, const string& name, const string& def) : ScriptFunction(_public, def)
+Public::Public(ScriptFunc _public, const std::string& name, const std::string& def) : ScriptFunction(_public, def)
 {
 	publics.emplace(name, this);
 }
 
-Public::Public(ScriptFuncPAWN _public, AMX* amx, const string& name, const string& def) : ScriptFunction(_public, amx, def)
+Public::Public(ScriptFuncPAWN _public, AMX* amx, const std::string& name, const std::string& def) : ScriptFunction(_public, amx, def)
 {
 	publics.emplace(name, this);
 }
@@ -20,7 +18,7 @@ Public::~Public()
 
 }
 
-unsigned long long Public::Call(const string& name, const vector<boost::any>& args)
+unsigned long long Public::Call(const std::string& name, const std::vector<boost::any>& args)
 {
 	auto it = publics.find(name);
 
@@ -30,7 +28,7 @@ unsigned long long Public::Call(const string& name, const vector<boost::any>& ar
 	return it->second->ScriptFunction::Call(args);
 }
 
-const string& Public::GetDefinition(const string& name)
+const std::string& Public::GetDefinition(const std::string& name)
 {
 	auto it = publics.find(name);
 
@@ -40,7 +38,7 @@ const string& Public::GetDefinition(const string& name)
 	return it->second->def;
 }
 
-bool Public::IsPAWN(const string& name)
+bool Public::IsPAWN(const std::string& name)
 {
 	auto it = publics.find(name);
 

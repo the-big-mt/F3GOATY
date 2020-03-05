@@ -5,12 +5,11 @@
 
 #include <algorithm>
 
-using namespace std;
 using namespace DB;
 
-unordered_map<unsigned int, Record*> Record::data;
+std::unordered_map<unsigned int, Record*> Record::data;
 
-Record::Record(const string& table, sqlite3_stmt* stmt)
+Record::Record(const std::string& table, sqlite3_stmt* stmt)
 {
 	if (sqlite3_column_count(stmt) != 4)
 		throw VaultException("Malformed input database (records): %s", table.c_str()).stacktrace();
@@ -46,7 +45,7 @@ Expected<Record*> Record::Lookup(unsigned int baseID)
 	return VaultException("No record with baseID %08X found", baseID);
 }
 
-Expected<Record*> Record::Lookup(unsigned int baseID, const string& type)
+Expected<Record*> Record::Lookup(unsigned int baseID, const std::string& type)
 {
 	auto it = data.find(baseID);
 
@@ -56,13 +55,13 @@ Expected<Record*> Record::Lookup(unsigned int baseID, const string& type)
 	return VaultException("No record with baseID %08X and type %s found", baseID, type.c_str());
 }
 
-Expected<Record*> Record::Lookup(unsigned int baseID, const vector<string>& types)
+Expected<Record*> Record::Lookup(unsigned int baseID, const std::vector<std::string>& types)
 {
 	auto it = data.find(baseID);
 
 	if (it != data.end())
 	{
-		const string& type = it->second->GetType();
+		const std::string& type = it->second->GetType();
 
 		if (find(types.begin(), types.end(), type) != types.end())
 			return it->second;
@@ -106,22 +105,22 @@ unsigned int Record::GetBase() const
 	return baseID;
 }
 
-const string& Record::GetName() const
+const std::string& Record::GetName() const
 {
 	return name;
 }
 
-const string& Record::GetDescription() const
+const std::string& Record::GetDescription() const
 {
 	return description;
 }
 
-const string& Record::GetType() const
+const std::string& Record::GetType() const
 {
 	return type;
 }
 
-void Record::SetDescription(const string& description)
+void Record::SetDescription(const std::string& description)
 {
 	this->description = description;
 }

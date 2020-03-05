@@ -10,7 +10,6 @@
 #include "Timer.hpp"
 #include "Script.hpp"
 
-using namespace std;
 using namespace RakNet;
 using namespace Values;
 
@@ -79,7 +78,7 @@ void Dedicated::Announce(bool announce)
 			RakString _map(self->GetServerMap().c_str());
 			unsigned int players = self->GetServerPlayers().first;
 			unsigned int playersMax = self->GetServerPlayers().second;
-			const map<string, string>& rules = self->GetServerRules();
+			const std::map<std::string, std::string>& rules = self->GetServerRules();
 
 			query.Write(name);
 			query.Write(_map);
@@ -140,7 +139,7 @@ void Dedicated::Query(Packet* packet)
 		RakString _map(self->GetServerMap().c_str());
 		unsigned int players = self->GetServerPlayers().first;
 		unsigned int playersMax = self->GetServerPlayers().second;
-		const map<string, string>& rules = self->GetServerRules();
+		const std::map<std::string, std::string>& rules = self->GetServerRules();
 
 		query.Write(name);
 		query.Write(_map);
@@ -252,7 +251,7 @@ void Dedicated::DedicatedThread()
 
 	if (announce)
 	{
-		vector<char> buf(announce, announce + strlen(announce) + 1);
+		std::vector<char> buf(announce, announce + strlen(announce) + 1);
 		peer->Startup(connections + 1, &sockdescr, 1, THREAD_PRIORITY_NORMAL);
 		peer->SetMaximumIncomingConnections(connections);
 		master.SetBinaryAddress(strtok(&buf[0], ":"));
@@ -307,7 +306,7 @@ void Dedicated::DedicatedThread()
 						{
 							NetworkResponse response = NetworkServer::ProcessPacket(packet);
 
-							vector<RakNetGUID> closures;
+							std::vector<RakNetGUID> closures;
 
 							for (const SingleResponse& _response : response)
 								if (static_cast<pTypes>(*_response.get_packet()->get()) == pTypes::ID_GAME_END)
@@ -331,7 +330,7 @@ void Dedicated::DedicatedThread()
 
 				Timer::GlobalTick();
 
-				this_thread::sleep_for(chrono::milliseconds(1));
+				std::this_thread::sleep_for(chrono::milliseconds(1));
 
 				if (announce)
 				{
@@ -348,7 +347,7 @@ void Dedicated::DedicatedThread()
 
 		Script::Call<Script::CBI("OnServerExit")>(false);
 	}
-	catch (exception& e)
+	catch (std::exception& e)
 	{
 		try
 		{

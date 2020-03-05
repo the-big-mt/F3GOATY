@@ -5,7 +5,6 @@
 #include "Dedicated.hpp"
 #include "Game.hpp"
 
-using namespace std;
 using namespace RakNet;
 
 #ifdef VAULTMP_DEBUG
@@ -106,9 +105,9 @@ NetworkResponse NetworkServer::ProcessPacket(Packet* data)
 			{
 				case pTypes::ID_GAME_AUTH:
 				{
-					string name, pwd;
+					std::string name, pwd;
 					PacketFactory::Access<pTypes::ID_GAME_AUTH>(packet, name, pwd);
-					response = Server::Authenticate(data->guid, move(name), move(pwd));
+					response = Server::Authenticate(data->guid, std::move(name), std::move(pwd));
 					break;
 				}
 
@@ -122,7 +121,7 @@ NetworkResponse NetworkServer::ProcessPacket(Packet* data)
 				{
 					string message;
 					PacketFactory::Access<pTypes::ID_GAME_CHAT>(packet, message);
-					response = Server::ChatMessage(data->guid, move(message));
+					response = Server::ChatMessage(data->guid, std::move(message));
 					break;
 				}
 

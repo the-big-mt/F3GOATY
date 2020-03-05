@@ -21,15 +21,13 @@
 	#include <unistd.h>
 #endif
 
-using namespace std;
-
 #ifdef VAULTMP_DEBUG
 template <typename T>
 DebugInput<Database<T>> Database<T>::debug;
 #endif
 
 template <typename T>
-unsigned int Database<T>::initialize(const string& file, const vector<string>& tables)
+unsigned int Database<T>::initialize(const std::string& file, const std::vector<string>& tables)
 {
 	data.clear();
 
@@ -53,7 +51,7 @@ unsigned int Database<T>::initialize(const string& file, const vector<string>& t
 	sqlite3_stmt* stmt;
 	string query = "SELECT (0) ";
 
-	for (const string& table : tables)
+	for (const std::string& table : tables)
 		query += "+ (SELECT COUNT(*) FROM " + table + ")";
 
 	if (sqlite3_prepare_v2(db, query.c_str(), query.length() + 1, &stmt, nullptr) != SQLITE_OK)
@@ -86,7 +84,7 @@ unsigned int Database<T>::initialize(const string& file, const vector<string>& t
 	double delta = 100.0 / count;
 	printf("Reading database %s (%s, ...)\n", file.c_str(), tables.front().c_str());
 
-	for (const string& table : tables)
+	for (const std::string& table : tables)
 	{
 		query = "SELECT * FROM " + table;
 
