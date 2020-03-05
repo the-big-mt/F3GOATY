@@ -1,13 +1,13 @@
 #pragma once
 
-#define MODFILES_PATH  "mods"
-#define SCRIPTS_PATH   "scripts"
-#define DATA_PATH      "data"
-#define PWNFILES_PATH  "AMXFILE=files"
-#define PWNFILES_KEY   "AMXFILE"
-#define PWNFILES_VAL   "files"
+constexpr auto MODFILES_PATH{"mods"};
+constexpr auto SCRIPTS_PATH{"scripts"};
+constexpr auto DATA_PATH{"data"};
+constexpr auto PWNFILES_PATH{"AMXFILE=files"};
+constexpr auto PWNFILES_KEY{"AMXFILE"};
+constexpr auto PWNFILES_VAL{"files"};
 
-#define DB_FALLOUT3 "fallout3.sqlite3"
+constexpr auto DB_FALLOUT3{"fallout3.sqlite3"};
 
 #ifndef MAX_PATH
 #define MAX_PATH PATH_MAX

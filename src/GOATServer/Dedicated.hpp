@@ -10,10 +10,10 @@
 #include "Debug.hpp"
 #endif
 
-#define RAKNET_STANDARD_PORT            1770
-#define RAKNET_STANDARD_CONNECTIONS     4
-#define RAKNET_MASTER_RATE              2000
-#define RAKNET_MASTER_STANDARD_PORT     1660
+constexpr auto RAKNET_STANDARD_PORT{1770};
+constexpr auto RAKNET_STANDARD_CONNECTIONS{4};
+constexpr auto RAKNET_MASTER_RATE{2000};
+constexpr auto RAKNET_MASTER_STANDARD_PORT{1660};
 
 typedef std::vector<std::pair<std::string, unsigned int>> ModList;
 
