@@ -27,12 +27,11 @@ LICENSE-vaultmp file for details.
 #include "../vaultmp.hpp"
 
 using namespace RakNet;
-using namespace std;
 
 RakPeerInterface* MasterServer::peer;
 SocketDescriptor* MasterServer::sockdescr;
 
-typedef map<SystemAddress, ServerEntry> ServerMap;
+typedef std::map<SystemAddress, ServerEntry> ServerMap;
 ServerMap MasterServer::serverList;
 
 bool MasterServer::thread;
@@ -44,7 +43,7 @@ void MasterServer::TerminateThread()
 
 void MasterServer::RemoveServer(SystemAddress addr)
 {
-	map<SystemAddress, ServerEntry>::iterator i;
+	std::map<SystemAddress, ServerEntry>::iterator i;
 	i = serverList.find(addr);
 
 	if (i != serverList.end())
@@ -142,7 +141,7 @@ void MasterServer::MasterThread()
 
 					BitStream query;
 
-					map<SystemAddress, ServerEntry>::iterator i;
+					std::map<SystemAddress, ServerEntry>::iterator i;
 					i = serverList.find(addr);
 
 					query.Write((MessageID) ID_MASTER_UPDATE);
@@ -196,7 +195,7 @@ void MasterServer::MasterThread()
 					bool announce;
 					query.Read(announce);
 
-					map<SystemAddress, ServerEntry>::iterator i;
+					std::map<SystemAddress, ServerEntry>::iterator i;
 					i = serverList.find(packet->systemAddress);
 
 					if (announce)
@@ -215,7 +214,7 @@ void MasterServer::MasterThread()
 						if (i == serverList.end())
 						{
 							std::pair<std::map<SystemAddress, ServerEntry>::iterator, bool> k;
-							k = serverList.insert(make_pair(packet->systemAddress, ServerEntry(name.C_String(), map.C_String(), make_pair(players, playersMax), 999)));
+							k = serverList.insert(std::make_pair(packet->systemAddress, ServerEntry(name.C_String(), map.C_String(), std::make_pair(players, playersMax), 999)));
 							entry = &(k.first)->second;
 						}
 						else
@@ -254,7 +253,7 @@ void MasterServer::MasterThread()
 			}
 		}
 
-		this_thread::sleep_for(chrono::milliseconds(1));
+		std::this_thread::sleep_for(chrono::milliseconds(1));
 	}
 
 	peer->Shutdown(300);
