@@ -39,14 +39,34 @@ Events:
 
 Messages:
 
-* Inventory data
-	- for each item
-		- string - loc string for name?
-		- string/uint32 - type?
-		- string - image?
-		- (u)int32 - amount
+* Connectionless:
+	* Connection accept
+	* Connection deny
+	or
+	* Connection response (accept/deny)
+		- 1 bit - accept/deny
+		- string/(u)int8 - denial reason (optional)
+	* Cell cache data
+		- foreach(cell in cells)
+			if(server cell != client cell) // formID + md5?
+				send data about the cell to the client
 
-* Player state
-	- (u)int32 - health
-	- float/(u)int32 - hunger
-	- (u)int32 - rads
+* Connection:
+	* Inventory data
+		- for each item
+			- string - loc string for name?
+			- string/uint32 - type?
+			- string - image?
+			- (u)int32 - amount
+
+	* Player state
+		- float/(u)int32 - health
+		- float/(u)int32 - hunger
+		- float/(u)int32 - rads
+		- float/(u)int32 - sleep
+
+	* Load cell
+		- (u)int32 - id
+
+	* Unload cell
+		- (u)int32 - id
