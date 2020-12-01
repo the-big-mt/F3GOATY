@@ -34,7 +34,7 @@ namespace f3goaty
 class CGameApp final : public SbClientApp
 {
 public:
-	CGameApp(/*sbe::IGameFramework *apGameFramework,*/ sbe::IGame *apGame, int argc, char **argv);
+	CGameApp(sbe::IGameFramework *apGameFramework, /*sbe::IGame *apGame,*/ int argc, char **argv);
 	~CGameApp();
 private:
 	void RunFrame() override;
@@ -43,8 +43,8 @@ private:
 	
 	float GetTimeStep() const {return 1.0f / mnUPS;} // TODO
 private:
-	//sbe::IGameFramework *mpFramework{nullptr};
-	sbe::IGame *mpGame{nullptr};
+	sbe::IGameFramework *mpFramework{nullptr};
+	//sbe::IGame *mpGame{nullptr};
 	
 	int mnUPS{0};
 };

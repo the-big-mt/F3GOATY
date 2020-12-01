@@ -52,10 +52,10 @@ sbe::IGame *CreateGame()
 
 int sbe::SbApplication::Main(int argc, char **argv)
 {
-	sbe::IGame &Game = CreateGame();
+	//sbe::IGame &Game = CreateGame();
 	sbe::IGameFramework &GameFramework = CreateGameFramework();
 	
-	f3goaty::CGameApp App(/*GameFramework,*/ Game, argc, argv);
+	f3goaty::CGameApp App(GameFramework, argc, argv);
 	App.Run();
 	return EXIT_SUCCESS;
 };
