@@ -20,30 +20,31 @@ You should have received a copy of the GNU General Public License along with Sug
 
 //*****************************************************************************
 
-#include <cstdlib>
+#pragma once
 
-#include "ServerApp.hpp"
-#include "SbGameFrameworkExternal.hpp"
+#include "AppFrameworks/SbApplication/SbApplication.hpp"
 
 //*****************************************************************************
 
-sbe::IGameFramework *CreateGameFramework()
+namespace sbe
 {
-#ifndef SBE_GAMEFRAMEWORK_HARD_LINKED
-	static sbe::SbGameFrameworkExternal SbGameFrameworkModule();
-	return SbGameFrameworkModule.GetGameFramework();
-#else
-	return new sbe::SbGameFramework::SbGameFramework();
-#endif
+struct IGameFramework;
 };
 
-int main(int argc, const char **argv)
+namespace f3goaty
 {
-	sbe::IGameFramework *pGameFramework = CreateGameFramework();
 
-	f3goaty::CGameServerApp App(pGameFramework, /*pSoundSystem, pRenderSystem, pInputSystem, pSystem,*/ argc, argv); // TODO: CServerApp
-	App.Run();
-
-	// never gets here
-	return EXIT_SUCCESS;
+class CServerApp final : public SbApplication
+{
+public:
+	CServerApp(sbe::IGameFramework *apGameFramework, int argc, char **argv);
+	~CServerApp();
+	
+	void Run();
+private:
+	void RunFrame() override;
+private:
+	sbe::IGameFramework *mpFramework{nullptr};
 };
+
+}; // namespace f3goaty
