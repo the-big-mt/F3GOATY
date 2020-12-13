@@ -18,18 +18,22 @@ You should have received a copy of the GNU General Public License along with Sug
 
 /// @file
 
+//*****************************************************************************
+
 #include "GameApp.hpp"
 
 #include "SbGameFramework/IGameFramework.hpp"
 
+//*****************************************************************************
+
 namespace f3goaty
 {
 
-CGameApp::CGameApp(sbe::IGameFramework *apGameFramework, int argc, char **argv)
+CGameApp::CGameApp(const char *asTitle, const char *asShortTitle, sbe::IGameFramework *apGameFramework, int argc, char **argv)
 	: SbClientApp(argc, argv),
 	mpFramework(apGameFramework)
 {
-	mpFramework->Init();
+	mpFramework->Init(asTitle, asShortTitle, argc, argv);
 	//if(!mpFramework->Init())
 		//throw std::runtime_error("Couldn't initialize the game framework!");
 };

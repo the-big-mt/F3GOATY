@@ -18,9 +18,13 @@ You should have received a copy of the GNU General Public License along with Sug
 
 /// @file
 
+//*****************************************************************************
+
 #pragma once
 
 #include "AppFrameworks/SbClientApp/SbClientApp.hpp"
+
+//*****************************************************************************
 
 namespace sbe
 {
@@ -31,10 +35,10 @@ struct IGame;
 namespace f3goaty
 {
 
-class CGameApp final : public SbClientApp
+class CGameApp final : public sbe::SbClientApp
 {
 public:
-	CGameApp(sbe::IGameFramework *apGameFramework, /*sbe::IGame *apGame,*/ int argc, char **argv);
+	CGameApp(const char *asTitle, const char *asShortTitle, sbe::IGameFramework *apGameFramework, /*sbe::IGame *apGame,*/ int argc, char **argv);
 	~CGameApp();
 private:
 	void RunFrame() override;

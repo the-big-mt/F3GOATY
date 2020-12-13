@@ -35,15 +35,15 @@ struct ISoundSystem;
 class SbGameFrameworkExternal final
 {
 public:
-	SbGameFrameworkExternal(ISystem &aSystem, IRenderSystem *apRenderSystem, ISoundSystem *apSoundSystem);
+	SbGameFrameworkExternal(/*ISystem &aSystem, IRenderSystem *apRenderSystem, ISoundSystem *apSoundSystem*/);
 	~SbGameFrameworkExternal();
 	
 	IGameFramework *GetGameFramework() const {return mpFramework;}
 private:
-	void LoadModule(IRenderSystem *apRenderSystem, ISoundSystem *apSoundSystem);
+	void LoadModule(/*IRenderSystem *apRenderSystem, ISoundSystem *apSoundSystem*/);
 	void UnloadModule();
 	
-	ISystem &mSystem;
+	//ISystem &mSystem;
 	
 	IGameFramework *mpFramework{nullptr};
 	

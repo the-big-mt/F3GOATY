@@ -1,6 +1,7 @@
 /*
 *******************************************************************************
 
+Copyright (C) 2008-2018 OpenMW Developers
 Copyright (C) 2019-2020 SugarBombEngine Developers
 
 This file is part of SugarBombEngine
@@ -23,8 +24,17 @@ You should have received a copy of the GNU General Public License along with Sug
 #include <cstdlib>
 
 #include "GameApp.hpp"
-#include "SbGameExternal.hpp"
+//#include "SbGameExternal.hpp"
 #include "SbGameFrameworkExternal.hpp"
+
+#ifdef _WIN32
+#	ifndef WIN32_LEAN_AND_MEAN
+#		define WIN32_LEAN_AND_MEAN
+#	endif
+#	include <windows.h>
+	// makes __argc and __argv available on windows
+//#	include <cstdlib>
+#endif
 
 //*****************************************************************************
 
@@ -33,13 +43,14 @@ You should have received a copy of the GNU General Public License along with Sug
 sbe::IGameFramework *CreateGameFramework()
 {
 #ifndef SBE_GAMEFRAMEWORK_HARD_LINKED
-	static sbe::SbGameFrameworkExternal SbGameFrameworkModule();
+	static sbe::SbGameFrameworkExternal SbGameFrameworkModule;
 	return SbGameFrameworkModule.GetGameFramework();
 #else
 	return new sbe::SbGameFramework::SbGameFramework();
 #endif
 };
 
+/*
 sbe::IGame *CreateGame()
 {
 #ifndef SBE_GAME_HARD_LINKED
@@ -49,13 +60,42 @@ sbe::IGame *CreateGame()
 	return new sbe::SbGame::SbGame();
 #endif
 };
+*/
 
+#ifdef ANDROID
+extern "C" int SDL_main(int argc, char **argv)
+#else
 int sbe::SbApplication::Main(int argc, char **argv)
+#endif
 {
-	//sbe::IGame &Game = CreateGame();
-	sbe::IGameFramework &GameFramework = CreateGameFramework();
+	//return wrapApplication(&runApplication, argc, argv, "OpenMW");
+
+	//sbe::IGame &Game = *CreateGame();
+	sbe::IGameFramework &GameFramework = *CreateGameFramework();
 	
-	f3goaty::CGameApp App(GameFramework, argc, argv);
+	constexpr auto F3GOATY_TITLE_F3{1};
+	constexpr auto F3GOATY_TITLE_FNV{2};
+
+	constexpr auto F3GOATY_TITLE{F3GOATY_TITLE_F3};
+	
+	const char *sGameTitle{"F3GOATY"};
+	
+	if constexpr(F3GOATY_TITLE == F3GOATY_TITLE_F3)
+		sGameTitle = "F3";
+	else if constexpr(F3GOATY_TITLE == F3GOATY_TITLE_FNV)
+		sGameTitle = "FNV";
+
+	f3goaty::CGameApp App(sGameTitle, "Fallout", &GameFramework, argc, argv);
 	App.Run();
 	return EXIT_SUCCESS;
 };
+
+// Platform specific for Windows when there is no console built into the executable
+// Windows will call the WinMain function instead of main in this case, the normal
+// main function is then called with the __argc and __argv parameters
+#if defined(_WIN32) && !defined(_CONSOLE)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+    return main(__argc, __argv);
+};
+#endif
