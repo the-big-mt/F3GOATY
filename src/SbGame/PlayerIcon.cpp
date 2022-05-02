@@ -29,8 +29,30 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cassert>
+#include <cstring>
+
+#include "../d3xp/MultiplayerGame.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/script/Script_Program.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclParticle.h"
+#include "../idlib/Dict.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Vector.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/Model.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
 #include "PlayerIcon.h"
+
+//namespace BFG
+//{
 
 static const char* iconKeys[ ICON_NONE ] =
 {
@@ -208,3 +230,4 @@ void idPlayerIcon::UpdateIcon( idPlayer* player, const idVec3& origin, const idM
 	gameRenderWorld->UpdateEntityDef( iconHandle, &renderEnt );
 }
 
+//} // namespace BFG

@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_WORLDSPAWN_H__
-#define __GAME_WORLDSPAWN_H__
+/// @file
+
+#pragma once
 
 #include "Entity.h"
 #include "gamesys/Class.h"
@@ -63,5 +64,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_WORLDSPAWN_H__ */

@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_PVS_H__
-#define __GAME_PVS_H__
+/// @file
+
+#pragma once
 
 #include "idlib/sys/sys_types.h"
 
@@ -138,5 +139,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_PVS_H__ */

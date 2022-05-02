@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_MOVER_H__
-#define __GAME_MOVER_H__
+/// @file
+
+#pragma once
 
 //#include <cstddef>
 
@@ -613,5 +614,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_MOVER_H__ */

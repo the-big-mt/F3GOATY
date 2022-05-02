@@ -29,7 +29,54 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cstring>
+
+#include "../cm/CollisionModel.h"
+#include "../d3xp/Achievements.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Fx.h"
+#include "../d3xp/Game_defines.h"
+#include "../d3xp/Moveable.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/Projectile.h"
+#include "../d3xp/ai/AI.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/Event.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/physics/Clip.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/physics/Physics_RigidBody.h"
+#include "../d3xp/script/Script_Thread.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/Common.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclParticle.h"
+#include "../idlib/BitMsg.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Heap.h"
+#include "../idlib/Str.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/geometry/TraceModel.h"
+#include "../idlib/math/Curve.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Random.h"
+#include "../idlib/math/Rotation.h"
+#include "../idlib/math/Vector.h"
+#include "../idlib/sys/sys_types.h"
+#include "../renderer/Material.h"
+#include "../renderer/Model.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
+
+//namespace BFG
+//{
+
+//class idUserInterface;
 
 /*
 ===============================================================================
@@ -1530,3 +1577,5 @@ bool idExplodingBarrel::ClientReceiveEvent( int event, int time, const idBitMsg&
 		}
 	}
 }
+
+//} // namespace BFG

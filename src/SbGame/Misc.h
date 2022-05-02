@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_MISC_H__
-#define __GAME_MISC_H__
+/// @file
+
+#pragma once
 
 //#include "cm/CollisionModel.h"
 
@@ -986,5 +987,3 @@ public:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_MISC_H__ */

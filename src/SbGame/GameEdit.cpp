@@ -1315,3 +1315,5 @@ void idGameEdit::MapEntityTranslate( const char* name, const idVec3& v ) const
 		}
 	}
 }
+
+//} // namespace BFG

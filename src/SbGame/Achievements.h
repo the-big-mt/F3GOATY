@@ -25,8 +25,10 @@ If you have questions concerning this license or the applicable additional terms
 
 ===========================================================================
 */
-#ifndef __ACHIEVEMENTS_H__
-#define __ACHIEVEMENTS_H__
+
+/// @file
+
+#pragma once
 
 //#include <cstddef>
 
@@ -221,5 +223,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif // !__ACHIEVEMENTS_H__

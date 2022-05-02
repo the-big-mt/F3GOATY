@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __SMOKEPARTICLES_H__
-#define __SMOKEPARTICLES_H__
+/// @file
+
+#pragma once
 
 //#include "idlib/Heap.h"
 #include "idlib/containers/List.h"
@@ -118,5 +119,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__SMOKEPARTICLES_H__ */

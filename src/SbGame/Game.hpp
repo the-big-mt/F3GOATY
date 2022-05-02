@@ -19,15 +19,21 @@ You should have received a copy of the GNU General Public License along with Sug
 
 /// @file
 
+//*****************************************************************************
+
 #pragma once
 
 #include "SbGame/IGame.hpp"
 
+//*****************************************************************************
+
 namespace sbe
 {
-struct ISystem;
+struct SbSystem;
 struct IRenderWorld;
 struct ISoundWorld;
+struct IRenderSystem;
+struct ISoundSystem;
 };
 
 namespace f3goaty

@@ -34,7 +34,53 @@ Invisible entities that affect other entities or the world when activated.
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cstddef>
+
+#include "../cm/CollisionModel.h"
+#include "../d3xp/Achievements.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Game_defines.h"
+#include "../d3xp/Item.h"
+#include "../d3xp/Light.h"
+#include "../d3xp/Misc.h"
+#include "../d3xp/Mover.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/PlayerView.h"
+#include "../d3xp/Sound.h"
+#include "../d3xp/Target.h"
+#include "../d3xp/WorldSpawn.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/Event.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/script/Script_Program.h"
+#include "../d3xp/script/Script_Thread.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/CmdSystem.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclPDA.h"
+#include "../framework/DeclParticle.h"
+#include "../framework/UsercmdGen.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Str.h"
+#include "../idlib/containers/List.h"
+#include "../idlib/math/Angles.h"
+#include "../idlib/math/Interpolate.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Vector.h"
+#include "../renderer/Material.h"
+#include "../renderer/Model.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/RenderWorld.h"
+#include "../sound/sound.h"
+#include "../ui/UserInterface.h"
+*/
 #include "Game_local.h"
+
+//namespace BFG
+//{
 
 /*
 ===============================================================================
@@ -303,7 +349,7 @@ void idTarget_EndLevel::Event_Activate( idEntity* activator )
 	idStr nextMap;
 	if( !spawnArgs.GetString( "nextMap", "", nextMap ) )
 	{
-		gameLocal.Printf( "idTarget_SessionCommand::Event_Activate: no nextMap key\n" );
+		gameLocal.Printf( "idTarget_EndLevel::Event_Activate: no nextMap key\n" );
 		return;
 	}
 	
@@ -2132,7 +2178,7 @@ void idTarget_FadeSoundClass::Event_RestoreVolume()
 {
 	float fadeTime = spawnArgs.GetFloat( "fadeTime" );
 	float fadeDB = spawnArgs.GetFloat( "fadeDB" );
-	//int fadeClass = spawnArgs.GetInt( "fadeClass" );
+	//int fadeClass = spawnArgs.GetInt( "fadeClass" ); // FIXME: DG: why is this not used?
 	// restore volume
 	gameSoundWorld->FadeSoundClasses( 0, fadeDB, fadeTime );
 }
@@ -2195,3 +2241,5 @@ void idTarget_Achievement::Event_Activate( idEntity* activator )
 		player->GetAchievementManager().EventCompletesAchievement( ( achievement_t )achievement );
 	}
 }
+
+//} // namespace BFG

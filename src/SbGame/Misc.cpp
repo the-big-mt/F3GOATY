@@ -4439,3 +4439,5 @@ void idPortalSky::Event_Activate( idEntity* activator )
 {
 	gameLocal.SetPortalSkyEnt( this );
 }
+
+//} // namespace BFG

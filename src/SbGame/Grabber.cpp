@@ -29,8 +29,51 @@ If you have questions concerning this license or the applicable additional terms
 #pragma hdrstop
 
 
+/*
+#include <cstddef>
+
+#include "../cm/CollisionModel.h"
+#include "../d3xp/AFEntity.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Game.h"
+#include "../d3xp/Grabber.h"
+#include "../d3xp/Item.h"
+#include "../d3xp/Moveable.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/PlayerView.h"
+#include "../d3xp/Projectile.h"
+#include "../d3xp/Weapon.h"
+#include "../d3xp/ai/AI.h"
+#include "../d3xp/anim/Anim.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/physics/Clip.h"
+#include "../d3xp/physics/Force_Grab.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/physics/Physics_AF.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/Common.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclParticle.h"
+#include "../framework/UsercmdGen.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Str.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/math/Angles.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Plane.h"
+#include "../idlib/math/Vector.h"
+#include "../renderer/Material.h"
+#include "../renderer/Model.h"
+#include "../renderer/RenderSystem.h"
+*/
 #include "Game_local.h"
 #include "Misc.h"
+
+//namespace BFG
+//{
 
 #define MAX_DRAG_TRACE_DISTANCE			384.0f
 #define TRACE_BOUNDS_SIZE				3.f
@@ -839,3 +882,4 @@ bool idGrabber::grabbableAI( const char* aiName )
 	return false;
 }
 
+//} // namespace BFG

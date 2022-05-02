@@ -25,8 +25,10 @@ If you have questions concerning this license or the applicable additional terms
 
 ===========================================================================
 */
-#ifndef PREDICTED_VALUE_H_
-#define PREDICTED_VALUE_H_
+
+/// @file
+
+#pragma once
 
 #include "Game_local.h"
 
@@ -81,5 +83,3 @@ private:
 
 
 //} // namespace BFG
-
-#endif // PREDICTED_VALUE_H_

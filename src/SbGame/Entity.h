@@ -26,8 +26,12 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_ENTITY_H__
-#define __GAME_ENTITY_H__
+/// @file
+
+#pragma once
+
+//#ifndef __GAME_ENTITY_H__
+//#define __GAME_ENTITY_H__
 
 /*
 #include <cassert>
@@ -137,7 +141,7 @@ enum
 // Signals
 // make sure to change script/doom_defs.script if you add any, or change their order
 //
-typedef enum
+enum signalNum_t
 {
 	SIG_TOUCH,				// object was touched
 	SIG_USE,				// object was used
@@ -152,7 +156,7 @@ typedef enum
 	SIG_MOVER_2TO1,			// mover changing from position 2 to 1
 	
 	NUM_SIGNALS
-} signalNum_t;
+};
 
 // FIXME: At some point we may want to just limit it to one thread per signal, but
 // for now, I'm allowing multiple threads.  We should reevaluate this later in the project
@@ -842,5 +846,3 @@ ID_INLINE SetTimeState::~SetTimeState()
 }
 
 //} // namespace BFG
-
-#endif /* !__GAME_ENTITY_H__ */

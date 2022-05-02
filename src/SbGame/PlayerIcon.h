@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef	__PLAYERICON_H__
-#define	__PLAYERICON_H__
+/// @file
+
+#pragma once
 
 /*
 #include "idlib/Lib.h"
@@ -43,19 +44,17 @@ class idMat3;
 class idPlayer;
 class idVec3;
 
-typedef enum
+enum playerIconType_t
 {
 	ICON_LAG,
 	ICON_CHAT,
 	ICON_TEAM_RED,
 	ICON_TEAM_BLUE,
 	ICON_NONE
-} playerIconType_t;
+};
 
 class idPlayerIcon
 {
-public:
-
 public:
 	idPlayerIcon();
 	~idPlayerIcon();
@@ -77,5 +76,3 @@ public:
 };
 
 //} // namespace BFG
-
-#endif	/* !_PLAYERICON_H_ */

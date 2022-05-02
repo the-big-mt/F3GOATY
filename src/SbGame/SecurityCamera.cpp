@@ -36,8 +36,40 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cmath>
+#include <cstdlib>
+
+#include "../cm/CollisionModel.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Fx.h"
+#include "../d3xp/Light.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/Pvs.h"
+#include "../d3xp/SecurityCamera.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/Event.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/physics/Clip.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/physics/Physics_RigidBody.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/DeclParticle.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Heap.h"
+#include "../idlib/Str.h"
+#include "../idlib/math/Angles.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Vector.h"
+#include "../renderer/Material.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
 
+//namespace BFG
+//{
 
 /***********************************************************************
 
@@ -146,7 +178,7 @@ void idSecurityCamera::Spawn()
 	}
 	
 	negativeSweep = ( sweepAngle < 0 ) ? true : false;
-	sweepAngle = idMath::Fabs( sweepAngle );
+	sweepAngle = idMath::Fabs( sweepAngle ); // DG: used abs() which is for ints..
 	
 	scanFovCos = cos( scanFov * idMath::PI / 360.0f );
 	
@@ -642,3 +674,5 @@ void idSecurityCamera::Present()
 		gameRenderWorld->UpdateEntityDef( modelDefHandle, &renderEntity );
 	}
 }
+
+//} // namespace BFG

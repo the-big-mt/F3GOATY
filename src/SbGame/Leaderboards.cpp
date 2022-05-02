@@ -370,3 +370,4 @@ CONSOLE_COMMAND( testLeaderboardUpload_SendToClients, "<gameType 0 - 4 > <frags 
 	session->LeaderboardFlush();
 }
 
+//} // namespace BFG

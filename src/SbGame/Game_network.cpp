@@ -1551,3 +1551,5 @@ void idEventQueue::Enqueue( entityNetEvent_t* event, outOfOrderBehaviour_t behav
 	}
 	end = event;
 }
+
+//} // namespace BFG

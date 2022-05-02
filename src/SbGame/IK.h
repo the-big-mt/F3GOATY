@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_IK_H__
-#define __GAME_IK_H__
+/// @file
+
+#pragma once
 
 #include "idlib/math/Matrix.h"
 #include "idlib/math/Vector.h"
@@ -197,5 +198,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_IK_H__ */

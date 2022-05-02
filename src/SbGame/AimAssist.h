@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef	__AIMASSIST_H__
-#define	__AIMASSIST_H__
+/// @file
+
+#pragma once
 
 //#include <cstddef>
 
@@ -92,5 +93,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif // !__AIMASSIST_H__

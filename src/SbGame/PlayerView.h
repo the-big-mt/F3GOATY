@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_PLAYERVIEW_H__
-#define __GAME_PLAYERVIEW_H__
+/// @file
+
+#pragma once
 
 class idMenuHandler_HUD;
 
@@ -487,4 +488,4 @@ public:
 // the crosshair is swapped for a laser sight in stereo rendering
 bool	IsGameStereoRendered();
 
-#endif /* !__GAME_PLAYERVIEW_H__ */
+//} // namespace BFG

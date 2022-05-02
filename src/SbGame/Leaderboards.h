@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __LEADERBOARDS_LOCAL_H__
-#define __LEADERBOARDS_LOCAL_H__
+/// @file
+
+#pragma once
 
 /*
 #if 0 // no steam api
@@ -86,5 +87,3 @@ void			LeaderboardLocal_Upload( lobbyUserID_t lobbyUserID, int gameType, leaderb
 extern const columnGameMode_t gameMode_columnDefs[];
 
 //} // namespace BFG
-
-#endif // __LEADERBOARDS_LOCAL_H__

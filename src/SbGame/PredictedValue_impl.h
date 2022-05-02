@@ -25,8 +25,10 @@ If you have questions concerning this license or the applicable additional terms
 
 ===========================================================================
 */
-#ifndef PREDICTED_VALUE_IMPL_H_
-#define PREDICTED_VALUE_IMPL_H_
+
+/// @file
+
+#pragma once
 
 #include "PredictedValue.h"
 #include "Player.h"
@@ -236,5 +238,3 @@ bool operator!=( const firstType_ lhs, const idPredictedValue< secondType_ >& rh
 
 
 //} // namespace BFG
-
-#endif // PREDICTED_VALUE_IMPL_H_

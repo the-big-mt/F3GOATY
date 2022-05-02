@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_MOVEABLE_H__
-#define __GAME_MOVEABLE_H__
+/// @file
+
+#pragma once
 
 //#include "SbCollision/CollisionModel.h"
 
@@ -239,5 +240,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_MOVEABLE_H__ */

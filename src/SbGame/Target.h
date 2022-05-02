@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_TARGET_H__
-#define __GAME_TARGET_H__
+/// @file
+
+#pragma once
 
 #include <cstring>
 
@@ -668,5 +669,3 @@ private:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_TARGET_H__ */

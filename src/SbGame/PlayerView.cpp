@@ -1991,5 +1991,4 @@ void FullscreenFXManager::Process( const renderView_t* view )
 	}
 }
 
-
-
+//} // namespace BFG

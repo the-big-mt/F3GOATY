@@ -3854,3 +3854,5 @@ int idMultiplayerGame::GetGameModes( const char** * gameModes, const char** * ga
 		return GAME_COUNT - 1;
 	}
 }
+
+//} // namespace BFG

@@ -26,8 +26,9 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
-#ifndef __GAME_AF_H__
-#define __GAME_AF_H__
+/// @file
+
+#pragma once
 
 /*
 #include <cstddef>
@@ -167,5 +168,3 @@ protected:
 };
 
 //} // namespace BFG
-
-#endif /* !__GAME_AF_H__ */

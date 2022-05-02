@@ -29,8 +29,54 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cmath>
+#include <cstring>
+
+#include "../cm/CollisionModel.h"
+#include "../d3xp/BrittleFracture.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Fx.h"
+#include "../d3xp/Game_defines.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/physics/Clip.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/physics/Physics_RigidBody.h"
+#include "../d3xp/physics/Physics_StaticMulti.h"
+#include "../framework/Common.h"
+#include "../framework/DeclEntityDef.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclParticle.h"
+#include "../idlib/BitMsg.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Heap.h"
+#include "../idlib/Lib.h"
+#include "../idlib/Str.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/containers/List.h"
+#include "../idlib/geometry/DrawVert.h"
+#include "../idlib/geometry/TraceModel.h"
+#include "../idlib/geometry/Winding.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Plane.h"
+#include "../idlib/math/Random.h"
+#include "../idlib/math/Simd.h"
+#include "../idlib/math/Vector.h"
+#include "../idlib/sys/sys_defines.h"
+#include "../idlib/sys/sys_types.h"
+#include "../renderer/Material.h"
+#include "../renderer/Model.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
 
+//namespace BFG
+//{
+
+//class idSoundShader;
 
 CLASS_DECLARATION( idEntity, idBrittleFracture )
 EVENT( EV_Activate, idBrittleFracture::Event_Activate )
@@ -1553,3 +1599,5 @@ bool idBrittleFracture::ClientReceiveEvent( int event, int time, const idBitMsg&
 		}
 	}
 }
+
+//} // namespace BFG

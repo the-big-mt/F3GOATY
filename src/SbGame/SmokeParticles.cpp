@@ -29,7 +29,28 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cmath>
+#include <cstring>
+
+#include "../d3xp/Entity.h"
+#include "../d3xp/SmokeParticles.h"
+#include "../framework/DeclParticle.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/containers/List.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Random.h"
+#include "../idlib/math/Vector.h"
+#include "../idlib/sys/sys_assert.h"
+#include "../idlib/sys/sys_types.h"
+#include "../renderer/Model.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
+
+//namespace BFG
+//{
 
 static const char* smokeParticle_SnapshotName = "_SmokeParticle_Snapshot_";
 
@@ -498,3 +519,5 @@ bool idSmokeParticles::ModelCallback( renderEntity_s* renderEntity, const render
 	
 	return true;
 }
+
+//} // namespace BFG
