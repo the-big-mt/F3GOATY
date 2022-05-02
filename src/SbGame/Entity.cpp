@@ -989,7 +989,8 @@ void idEntity::SetName( const char* newname )
 	name = newname;
 	if( name.Length() )
 	{
-		if( ( name == "nullptr" ) || ( name == "null_entity" ) )
+		// TODO: change 'NULL' to 'nullptr'?
+		if( ( name == "NULL" ) || ( name == "null_entity" ) )
 		{
 			gameLocal.Error( "Cannot name entity '%s'.  '%s' is reserved for script.", name.c_str(), name.c_str() );
 		}

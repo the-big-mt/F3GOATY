@@ -33,6 +33,9 @@ If you have questions concerning this license or the applicable additional terms
 #include "Leaderboards.h"
 #include "MultiplayerGame.h"
 
+//namespace BFG
+//{
+
 /*
 ================================================================================================
 

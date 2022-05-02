@@ -29,10 +29,27 @@ If you have questions concerning this license or the applicable additional terms
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cstring>
+
+#include "../d3xp/Pvs.h"
+#include "../idlib/Heap.h"
+#include "../idlib/Lib.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/geometry/Winding.h"
+#include "../idlib/math/Plane.h"
+#include "../idlib/math/Vector.h"
+#include "../idlib/sys/sys_assert.h"
+#include "../idlib/sys/sys_types.h"
+#include "../renderer/RenderWorld.h"
+*/
 #include "Game_local.h"
+//#include "Timer.h"
+
+//namespace BFG
+//{
 
 #define MAX_BOUNDS_AREAS	16
-
 
 typedef struct pvsPassage_s
 {
@@ -1648,3 +1665,5 @@ bool idPVS::CheckAreasForPortalSky( const pvsHandle_t handle, const idVec3& orig
 	
 	return false;
 }
+
+//} // namespace BFG

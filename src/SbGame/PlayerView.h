@@ -30,7 +30,27 @@ If you have questions concerning this license or the applicable additional terms
 
 #pragma once
 
+/*
+#include <cstddef>
+
+#include "../idlib/Heap.h"
+#include "../idlib/Str.h"
+#include "../idlib/containers/List.h"
+#include "../idlib/math/Angles.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Vector.h"
+#include "../renderer/RenderWorld.h"
+
+namespace BFG
+{
+
+class idDict;
+class idMaterial;
+*/
 class idMenuHandler_HUD;
+//class idPlayer;
+//class idRestoreGame;
+//class idSaveGame;
 
 /*
 ===============================================================================

@@ -2523,7 +2523,7 @@ bool idAI::NewWanderDir( const idVec3& dest )
 	}
 	
 	// try other directions
-	if( ( gameLocal.random.RandomInt() & 1 ) || idMath::Fabs( deltay ) > idMath::Fabs( deltax ) )
+	if( ( gameLocal.random.RandomInt() & 1 ) || idMath::Fabs( deltay ) > idMath::Fabs( deltax ) ) // DG: used abs() which is for ints..
 	{
 		tdir = d[ 1 ];
 		d[ 1 ] = d[ 2 ];
@@ -5627,7 +5627,7 @@ void idAI::TriggerParticles( const char* jointName )
 void idAI::TriggerFX( const char* joint, const char* fx )
 {
 
-	if( !strcmp( joint, "origin" ) )
+	if( !idStr::Cmp( joint, "origin" ) )
 	{
 		idEntityFx::StartFx( fx, nullptr, nullptr, this, true );
 	}
