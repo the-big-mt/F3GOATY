@@ -34,7 +34,70 @@ Various utility objects and functions.
 #include "precompiled.h"
 #pragma hdrstop
 
+/*
+#include <cstddef>
+
+#include "../aas/AASFile.h"
+#include "../cm/CollisionModel.h"
+#include "../d3xp/AF.h"
+#include "../d3xp/AFEntity.h"
+#include "../d3xp/Achievements.h"
+#include "../d3xp/Actor.h"
+#include "../d3xp/Camera.h"
+#include "../d3xp/Entity.h"
+#include "../d3xp/Game_defines.h"
+#include "../d3xp/Misc.h"
+#include "../d3xp/Moveable.h"
+#include "../d3xp/Player.h"
+#include "../d3xp/PlayerView.h"
+#include "../d3xp/Projectile.h"
+#include "../d3xp/SmokeParticles.h"
+#include "../d3xp/WorldSpawn.h"
+#include "../d3xp/ai/AI.h"
+#include "../d3xp/anim/Anim.h"
+#include "../d3xp/gamesys/Class.h"
+#include "../d3xp/gamesys/Event.h"
+#include "../d3xp/gamesys/SaveGame.h"
+#include "../d3xp/gamesys/SysCvar.h"
+#include "../d3xp/menus/MenuHandler.h"
+#include "../d3xp/physics/Clip.h"
+#include "../d3xp/physics/Force_Field.h"
+#include "../d3xp/physics/Force_Spring.h"
+#include "../d3xp/physics/Physics.h"
+#include "../d3xp/physics/Physics_Parametric.h"
+#include "../d3xp/script/Script_Program.h"
+#include "../d3xp/script/Script_Thread.h"
+#include "../framework/CVarSystem.h"
+#include "../framework/Common.h"
+#include "../framework/DeclManager.h"
+#include "../framework/DeclParticle.h"
+#include "../framework/UsercmdGen.h"
+#include "../idlib/BitMsg.h"
+#include "../idlib/Dict.h"
+#include "../idlib/Heap.h"
+#include "../idlib/Lib.h"
+#include "../idlib/Str.h"
+#include "../idlib/bv/Bounds.h"
+#include "../idlib/containers/LinkList.h"
+#include "../idlib/containers/List.h"
+#include "../idlib/math/Angles.h"
+#include "../idlib/math/Extrapolate.h"
+#include "../idlib/math/Math.h"
+#include "../idlib/math/Matrix.h"
+#include "../idlib/math/Random.h"
+#include "../idlib/math/Vector.h"
+#include "../idlib/sys/sys_types.h"
+#include "../renderer/Material.h"
+#include "../renderer/Model.h"
+#include "../renderer/ModelManager.h"
+#include "../renderer/RenderWorld.h"
+#include "../sound/sound.h"
+#include "../ui/UserInterface.h"
+*/
 #include "Game_local.h"
+
+//namespace BFG
+//{
 
 /*
 ===============================================================================
@@ -4414,8 +4477,24 @@ idPortalSky::Spawn
 */
 void idPortalSky::Spawn()
 {
+	// TODO
+/*
+	if( spawnArgs.GetInt( "ps_type" ) == PORTALSKY_GLOBAL )
+	{
+		gameLocal.SetGlobalPortalSky( spawnArgs.GetString( "name" ) );
+		gameLocal.portalSkyGlobalOrigin = GetPhysics()->GetOrigin();
+	}
+	
+*/
 	if( !spawnArgs.GetBool( "triggered" ) )
 	{
+		// TODO
+/*
+		if( spawnArgs.GetInt( "ps_type" ) != PORTALSKY_STANDARD )
+		{
+			gameLocal.portalSkyScale = spawnArgs.GetInt( "ps_scale", "16" );
+		}
+*/
 		PostEventMS( &EV_PostSpawn, 1 );
 	}
 }
@@ -4427,6 +4506,17 @@ idPortalSky::Event_PostSpawn
 */
 void idPortalSky::Event_PostSpawn()
 {
+	// TODO
+/*
+	gameLocal.SetCurrentPortalSkyType( spawnArgs.GetInt( "ps_type", "0" ) );
+	
+	if( gameLocal.GetCurrentPortalSkyType() != PORTALSKY_GLOBAL )
+	{
+		gameLocal.portalSkyOrigin = GetPhysics()->GetOrigin();
+		// both standard and local portalSky share the origin,
+		// it's in their execution that things change.
+	}
+*/
 	gameLocal.SetPortalSkyEnt( this );
 }
 
@@ -4437,6 +4527,19 @@ idPortalSky::Event_Activate
 */
 void idPortalSky::Event_Activate( idEntity* activator )
 {
+	// TODO
+/*
+	gameLocal.SetCurrentPortalSkyType( spawnArgs.GetInt( "ps_type", "0" ) );
+	
+	if( gameLocal.GetCurrentPortalSkyType() != PORTALSKY_GLOBAL )
+	{
+		gameLocal.portalSkyOrigin = GetPhysics()->GetOrigin();
+		// both standard and local portalSky share the origin,
+		//it's in their execution that things change.
+	}
+	
+	gameLocal.portalSkyScale = spawnArgs.GetInt( "ps_scale", "16" );
+*/
 	gameLocal.SetPortalSkyEnt( this );
 }
 

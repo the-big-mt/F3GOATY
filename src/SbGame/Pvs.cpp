@@ -1646,6 +1646,17 @@ bool idPVS::CheckAreasForPortalSky( const pvsHandle_t handle, const idVec3& orig
 	
 	if( sourceArea == -1 )
 	{
+		// TODO
+/*
+		// this is the case where the player is not in any AAS area, so he is in
+		// noclip mode out of the map.
+		if( gameLocal.CheckGlobalPortalSky() || ( gameLocal.GetCurrentPortalSkyType() == PORTALSKY_LOCAL ) )
+		{
+			// if the current PS is local, or there is a global PS in the map,
+			// keep callculating for the global or the local portalSky.
+			return true;
+		}
+*/
 		return false;
 	}
 	
@@ -1663,6 +1674,19 @@ bool idPVS::CheckAreasForPortalSky( const pvsHandle_t handle, const idVec3& orig
 		}
 	}
 	
+	// TODO
+/*
+	// if the player is in an unreachable AAS like inisde a sealed room,
+	// where he teleports in, the function will return false.
+	// so let's repeat the global/local PS check!
+	
+	if( gameLocal.CheckGlobalPortalSky() || ( gameLocal.GetCurrentPortalSkyType() == PORTALSKY_LOCAL ) )
+	{
+		// if the current PS is local, or there is a global PS in the map,
+		// keep callculating for the global or the local portalSky.
+		return true;
+	}
+*/
 	return false;
 }
 

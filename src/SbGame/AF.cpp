@@ -966,7 +966,7 @@ bool idAF::Load( idEntity* ent, const char* fileName )
 	
 	if( animator == nullptr )
 	{
-		gameLocal.Warning( "Couldn't load af '%s' for entity '%s' at (%s): nullptr animator\n", name.c_str(), ent->name.c_str(), ent->GetPhysics()->GetOrigin().ToString( 0 ) );
+		gameLocal.Warning( "Couldn't load af '%s' for entity '%s' at (%s): NULL animator\n", name.c_str(), ent->name.c_str(), ent->GetPhysics()->GetOrigin().ToString( 0 ) );
 		return false;
 	}
 	

@@ -135,6 +135,7 @@ class FxFader
 	
 public:
 	FxFader();
+	//virtual ~FxFader() = default; // TODO
 	
 	// primary functions
 	bool					SetTriggerState( bool active );

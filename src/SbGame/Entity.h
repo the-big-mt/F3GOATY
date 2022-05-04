@@ -337,7 +337,7 @@ public:
 	bool					IsActive() const;
 	void					BecomeActive( int flags );
 	void					BecomeInactive( int flags );
-	void					UpdatePVSAreas( const idVec3& pos );
+	void					UpdatePVSAreas( const SbVec3& pos );
 	void					BecomeReplicated();
 	
 	// visuals
@@ -349,8 +349,8 @@ public:
 	const idDeclSkin* 		GetSkin() const;
 	void					SetShaderParm( int parmnum, float value );
 	virtual void			SetColor( float red, float green, float blue );
-	virtual void			SetColor( const idVec3& color );
-	virtual void			GetColor( idVec3& out ) const;
+	virtual void			SetColor( const SbVec3& color );
+	virtual void			GetColor( SbVec3& out ) const;
 	virtual void			SetColor( const idVec4& color );
 	virtual void			GetColor( idVec4& out ) const;
 	virtual void			FreeModelDef();
@@ -361,7 +361,7 @@ public:
 	void					UpdateVisuals();
 	void					UpdateModel();
 	void					UpdateModelTransform();
-	virtual void			ProjectOverlay( const idVec3& origin, const idVec3& dir, float size, const char* material );
+	virtual void			ProjectOverlay( const SbVec3& origin, const SbVec3& dir, float size, const char* material );
 	int						GetNumPVSAreas();
 	const int* 				GetPVSAreas();
 	void					ClearPVSAreas();
@@ -402,13 +402,13 @@ public:
 	int						GetBindBody() const;
 	idEntity* 				GetTeamMaster() const;
 	idEntity* 				GetNextTeamEntity() const;
-	void					ConvertLocalToWorldTransform( idVec3& offset, idMat3& axis );
-	idVec3					GetLocalVector( const idVec3& vec ) const;
-	idVec3					GetLocalCoordinates( const idVec3& vec ) const;
-	idVec3					GetWorldVector( const idVec3& vec ) const;
-	idVec3					GetWorldCoordinates( const idVec3& vec ) const;
-	bool					GetMasterPosition( idVec3& masterOrigin, idMat3& masterAxis ) const;
-	void					GetWorldVelocities( idVec3& linearVelocity, idVec3& angularVelocity ) const;
+	void					ConvertLocalToWorldTransform( SbVec3& offset, idMat3& axis );
+	SbVec3					GetLocalVector( const SbVec3& vec ) const;
+	SbVec3					GetLocalCoordinates( const SbVec3& vec ) const;
+	SbVec3					GetWorldVector( const SbVec3& vec ) const;
+	SbVec3					GetWorldCoordinates( const SbVec3& vec ) const;
+	bool					GetMasterPosition( SbVec3& masterOrigin, idMat3& masterAxis ) const;
+	void					GetWorldVelocities( SbVec3& linearVelocity, SbVec3& angularVelocity ) const;
 	
 	// physics
 	// set a new physics object to be used by this entity
@@ -424,25 +424,25 @@ public:
 	// InterpolatePhysics actually calls evaluate, this version doesn't.
 	void					InterpolatePhysicsOnly( const float fraction, bool updateTeam = false );
 	// set the origin of the physics object (relative to bindMaster if not NULL)
-	void					SetOrigin( const idVec3& org );
+	void					SetOrigin( const SbVec3& org );
 	// set the axis of the physics object (relative to bindMaster if not NULL)
 	void					SetAxis( const idMat3& axis );
 	// use angles to set the axis of the physics object (relative to bindMaster if not NULL)
 	void					SetAngles( const idAngles& ang );
 	// get the floor position underneath the physics object
-	bool					GetFloorPos( float max_dist, idVec3& floorpos ) const;
+	bool					GetFloorPos( float max_dist, SbVec3& floorpos ) const;
 	// retrieves the transformation going from the physics origin/axis to the visual origin/axis
-	virtual bool			GetPhysicsToVisualTransform( idVec3& origin, idMat3& axis );
+	virtual bool			GetPhysicsToVisualTransform( SbVec3& origin, idMat3& axis );
 	// retrieves the transformation going from the physics origin/axis to the sound origin/axis
-	virtual bool			GetPhysicsToSoundTransform( idVec3& origin, idMat3& axis );
+	virtual bool			GetPhysicsToSoundTransform( SbVec3& origin, idMat3& axis );
 	// called from the physics object when colliding, should return true if the physics simulation should stop
-	virtual bool			Collide( const trace_t& collision, const idVec3& velocity );
+	virtual bool			Collide( const trace_t& collision, const SbVec3& velocity );
 	// retrieves impact information, 'ent' is the entity retrieving the info
-	virtual void			GetImpactInfo( idEntity* ent, int id, const idVec3& point, impactInfo_t* info );
+	virtual void			GetImpactInfo( idEntity* ent, int id, const SbVec3& point, impactInfo_t* info );
 	// apply an impulse to the physics object, 'ent' is the entity applying the impulse
-	virtual void			ApplyImpulse( idEntity* ent, int id, const idVec3& point, const idVec3& impulse );
+	virtual void			ApplyImpulse( idEntity* ent, int id, const SbVec3& point, const SbVec3& impulse );
 	// add a force to the physics object, 'ent' is the entity adding the force
-	virtual void			AddForce( idEntity* ent, int id, const idVec3& point, const idVec3& force );
+	virtual void			AddForce( idEntity* ent, int id, const SbVec3& point, const SbVec3& force );
 	// activate the physics object, 'ent' is the entity activating this entity
 	virtual void			ActivatePhysics( idEntity* ent );
 	// returns true if the physics object is at rest
@@ -456,17 +456,17 @@ public:
 	
 	// damage
 	// returns true if this entity can be damaged from the given origin
-	virtual bool			CanDamage( const idVec3& origin, idVec3& damagePoint ) const;
+	virtual bool			CanDamage( const SbVec3& origin, SbVec3& damagePoint ) const;
 	// applies damage to this entity
-	virtual	void			Damage( idEntity* inflictor, idEntity* attacker, const idVec3& dir, const char* damageDefName, const float damageScale, const int location );
+	virtual	void			Damage( idEntity* inflictor, idEntity* attacker, const SbVec3& dir, const char* damageDefName, const float damageScale, const int location );
 	// adds a damage effect like overlays, blood, sparks, debris etc.
-	virtual void			AddDamageEffect( const trace_t& collision, const idVec3& velocity, const char* damageDefName );
+	virtual void			AddDamageEffect( const trace_t& collision, const SbVec3& velocity, const char* damageDefName );
 	// callback function for when another entity received damage from this entity.  damage can be adjusted and returned to the caller.
 	virtual void			DamageFeedback( idEntity* victim, idEntity* inflictor, int& damage );
 	// notifies this entity that it is in pain
-	virtual bool			Pain( idEntity* inflictor, idEntity* attacker, int damage, const idVec3& dir, int location );
+	virtual bool			Pain( idEntity* inflictor, idEntity* attacker, int damage, const SbVec3& dir, int location );
 	// notifies this entity that is has been killed
-	virtual void			Killed( idEntity* inflictor, idEntity* attacker, int damage, const idVec3& dir, int location );
+	virtual void			Killed( idEntity* inflictor, idEntity* attacker, int damage, const SbVec3& dir, int location );
 	
 	// scripting
 	virtual bool			ShouldConstructScriptObjectAtSpawn() const;
@@ -490,9 +490,9 @@ public:
 	void					ActivateTargets( idEntity* activator ) const;
 	
 	// misc
-	virtual void			Teleport( const idVec3& origin, const idAngles& angles, idEntity* destination );
+	virtual void			Teleport( const SbVec3& origin, const idAngles& angles, idEntity* destination );
 	bool					TouchTriggers() const;
-	idCurve_Spline<idVec3>* GetSpline() const;
+	idCurve_Spline<SbVec3>* GetSpline() const;
 	virtual void			ShowEditingDialog();
 	
 	enum
@@ -541,7 +541,7 @@ public:
 		return  GetEntityNumber() < ENTITYNUM_FIRST_NON_REPLICATED;
 	}
 	
-	void					CreateDeltasFromOldOriginAndAxis( const idVec3& oldOrigin, const idMat3& oldAxis );
+	void					CreateDeltasFromOldOriginAndAxis( const SbVec3& oldOrigin, const idMat3& oldAxis );
 	void					DecayOriginAndAxisDelta();
 	uint32					GetPredictedKey()
 	{
@@ -581,7 +581,7 @@ protected:
 	int						modelDefHandle;						// handle to static renderer model
 	refSound_t				refSound;							// used to present sound to the audio engine
 	
-	idVec3					GetOriginDelta() const
+	SbVec3					GetOriginDelta() const
 	{
 		return originDelta;
 	}
@@ -610,7 +610,7 @@ private:
 	
 	// Delta values that are set when the server or client disagree on where the render model should be. If this happens,
 	// they resolve it through DecayOriginAndAxisDelta()
-	idVec3					originDelta;
+	SbVec3					originDelta;
 	idMat3					axisDelta;
 	
 	interpolationBehavior_t	interpolationBehavior;
@@ -623,7 +623,7 @@ private:
 	
 	// physics
 	// initialize the default physics
-	void					InitDefaultPhysics( const idVec3& origin, const idMat3& axis );
+	void					InitDefaultPhysics( const SbVec3& origin, const idMat3& axis );
 	// update visual position from the physics
 	void					UpdateFromPhysics( bool moveBack );
 	// get physics timestep
@@ -668,16 +668,16 @@ private:
 	void					Event_StartSound( const char* soundName, int channel, int netSync );
 	void					Event_FadeSound( int channel, float to, float over );
 	void					Event_GetWorldOrigin();
-	void					Event_SetWorldOrigin( idVec3 const& org );
+	void					Event_SetWorldOrigin( SbVec3 const& org );
 	void					Event_GetOrigin();
-	void					Event_SetOrigin( const idVec3& org );
+	void					Event_SetOrigin( const SbVec3& org );
 	void					Event_GetAngles();
 	void					Event_SetAngles( const idAngles& ang );
-	void					Event_SetLinearVelocity( const idVec3& velocity );
+	void					Event_SetLinearVelocity( const SbVec3& velocity );
 	void					Event_GetLinearVelocity();
-	void					Event_SetAngularVelocity( const idVec3& velocity );
+	void					Event_SetAngularVelocity( const SbVec3& velocity );
 	void					Event_GetAngularVelocity();
-	void					Event_SetSize( const idVec3& mins, const idVec3& maxs );
+	void					Event_SetSize( const SbVec3& mins, const SbVec3& maxs );
 	void					Event_GetSize();
 	void					Event_GetMins();
 	void					Event_GetMaxs();
@@ -694,7 +694,7 @@ private:
 	void					Event_RestorePosition();
 	void					Event_UpdateCameraTarget();
 	void					Event_DistanceTo( idEntity* ent );
-	void					Event_DistanceToPoint( const idVec3& point );
+	void					Event_DistanceToPoint( const SbVec3& point );
 	void					Event_StartFx( const char* fx );
 	void					Event_WaitFrame();
 	void					Event_Wait( float time );
@@ -719,8 +719,8 @@ private:
 typedef struct damageEffect_s
 {
 	jointHandle_t			jointNum;
-	idVec3					localOrigin;
-	idVec3					localNormal;
+	SbVec3					localOrigin;
+	SbVec3					localNormal;
 	int						time;
 	const idDeclParticle*	type;
 	struct damageEffect_s* 	next;
@@ -746,12 +746,12 @@ public:
 	virtual idAnimator* 	GetAnimator();
 	virtual void			SetModel( const char* modelname );
 	
-	bool					GetJointWorldTransform( jointHandle_t jointHandle, int currentTime, idVec3& offset, idMat3& axis );
-	bool					GetJointTransformForAnim( jointHandle_t jointHandle, int animNum, int currentTime, idVec3& offset, idMat3& axis ) const;
+	bool					GetJointWorldTransform( jointHandle_t jointHandle, int currentTime, SbVec3& offset, idMat3& axis );
+	bool					GetJointTransformForAnim( jointHandle_t jointHandle, int animNum, int currentTime, SbVec3& offset, idMat3& axis ) const;
 	
 	virtual int				GetDefaultSurfaceType() const;
-	virtual void			AddDamageEffect( const trace_t& collision, const idVec3& velocity, const char* damageDefName );
-	void					AddLocalDamageEffect( jointHandle_t jointNum, const idVec3& localPoint, const idVec3& localNormal, const idVec3& localDir, const idDeclEntityDef* def, const idMaterial* collisionMaterial );
+	virtual void			AddDamageEffect( const trace_t& collision, const SbVec3& velocity, const char* damageDefName );
+	void					AddLocalDamageEffect( jointHandle_t jointNum, const SbVec3& localPoint, const SbVec3& localNormal, const SbVec3& localDir, const idDeclEntityDef* def, const idMaterial* collisionMaterial );
 	void					UpdateDamageEffects();
 	
 	virtual bool			ClientReceiveEvent( int event, int time, const idBitMsg& msg );
@@ -770,7 +770,7 @@ private:
 	void					Event_GetJointHandle( const char* jointname );
 	void 					Event_ClearAllJoints();
 	void 					Event_ClearJoint( jointHandle_t jointnum );
-	void 					Event_SetJointPos( jointHandle_t jointnum, jointModTransform_t transform_type, const idVec3& pos );
+	void 					Event_SetJointPos( jointHandle_t jointnum, jointModTransform_t transform_type, const SbVec3& pos );
 	void 					Event_SetJointAngle( jointHandle_t jointnum, jointModTransform_t transform_type, const idAngles& angles );
 	void 					Event_GetJointPos( jointHandle_t jointnum );
 	void 					Event_GetJointAngle( jointHandle_t jointnum );
