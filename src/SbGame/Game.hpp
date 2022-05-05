@@ -2,7 +2,7 @@
 *******************************************************************************
 
 Copyright (C) 1993-2012 id Software LLC, a ZeniMax Media company.
-Copyright (C) 2019-2020 SugarBombEngine Developers
+Copyright (C) 2019-2020, 2022 SugarBombEngine Developers
 
 This file is part of SugarBombEngine
 
@@ -34,6 +34,8 @@ struct IRenderWorld;
 struct ISoundWorld;
 struct IRenderSystem;
 struct ISoundSystem;
+
+struct SbGameShell;
 };
 
 namespace f3goaty
@@ -57,11 +59,6 @@ public:
 	bool Draw(int anClientNum) override;
 	
 	void MapShutdown() override;
-	
-	void Shell_CreateMenu(bool abInGame) override;
-	void Shell_Cleanup() override;
-	void Shell_Show(bool abShow) override;
-	void Shell_SyncWithSession() override;
 	
 	// ---------------------- End of IGame Interface -------------------
 
@@ -94,6 +91,7 @@ private:
 	sbe::IRenderSystem &mRenderSystem;
 	sbe::ISoundSystem &mSoundSystem;
 	
+	sbe::SbGameShell *mpShell{nullptr};
 	IRenderWorld *mpGameRenderWorld{nullptr}; ///< All drawing is done to this world
 	ISoundWorld *mpGameSoundWorld{nullptr}; ///< All audio goes to this world
 	
