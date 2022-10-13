@@ -2,7 +2,7 @@
 *******************************************************************************
 
 Copyright (C) 2008-2018 OpenMW Developers
-Copyright (C) 2019-2020 SugarBombEngine Developers
+Copyright (C) 2019-2020, 2022 SugarBombEngine Developers
 
 This file is part of SugarBombEngine
 
@@ -24,6 +24,7 @@ You should have received a copy of the GNU General Public License along with Sug
 #include <cstdlib>
 
 #include "GameApp.hpp"
+#include "GameConfig.hpp"
 //#include "SbGameExternal.hpp"
 #include "SbGameFrameworkExternal.hpp"
 
@@ -73,19 +74,10 @@ int sbe::SbApplication::Main(int argc, char **argv)
 	//sbe::IGame &Game = *CreateGame();
 	sbe::IGameFramework &GameFramework = *CreateGameFramework();
 	
-	constexpr auto F3GOATY_TITLE_F3{1};
-	constexpr auto F3GOATY_TITLE_FNV{2};
-
-	constexpr auto F3GOATY_TITLE{F3GOATY_TITLE_F3};
 	
-	const char *sGameTitle{"F3GOATY"};
 	
-	if constexpr(F3GOATY_TITLE == F3GOATY_TITLE_F3)
-		sGameTitle = "F3";
-	else if constexpr(F3GOATY_TITLE == F3GOATY_TITLE_FNV)
-		sGameTitle = "FNV";
 
-	f3goaty::CGameApp App(sGameTitle, "Fallout", &GameFramework, argc, argv);
+	f3goaty::CGameApp App(sbe::GAME_TITLE, sbe::GAME_CONFIG_PREFIX, pGameFramework.get(), argc, argv);
 	App.Run();
 	return EXIT_SUCCESS;
 };

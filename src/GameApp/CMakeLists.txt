@@ -4,6 +4,12 @@ project(F3GOATY-gameapp)
 
 add_executable(${PROJECT_NAME})
 
+set(SBE_GAME_TITLE "F3GOATY" CACHE STRING "Game title (will be the game window title)")
+set(SBE_GAME_SHORT_TITLE "F3GOATY" CACHE STRING "Game short title (will be used as an output file name)")
+set(SBE_GAME_CONFIG_PREFIX "Fallout" CACHE STRING "Will be used as a game config files prefix")
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/GameConfig.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/GameConfig.hpp)
+
 target_include_directories(${PROJECT_NAME}
 	PRIVATE ${SBE_INIPARSER_PATH}/src
 )
@@ -66,5 +72,5 @@ if(ANDROID)
 endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-	OUTPUT_NAME "F3GOATY"
+	OUTPUT_NAME ${SBE_GAME_SHORT_TITLE}
 )
